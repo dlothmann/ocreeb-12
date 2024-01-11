@@ -30,7 +30,7 @@ keyboard.diode_orientation = DiodeOrientation.COL2ROW
 encoders.pins = ((board.A2, board.A1, board.A0, False), (board.SCK, board.MISO, board.MOSI, False),)
 
 # EXTENSIONS
-rgb_ext = RGB(pixel_pin = board.D10, num_pixels=4, hue_default=100)
+rgb_ext = RGB(pixel_pin = board.D10, num_pixels=4, hue_default=173)
 midi_ext = Midi()
 keyboard.extensions.append(rgb_ext)
 keyboard.extensions.append(midi_ext)
@@ -38,28 +38,29 @@ keyboard.debug_enabled = False
 
 # MACROS ROW 1
 GIT = simple_key_sequence([KC.LCMD(KC.LALT(KC.LSFT(KC.T))), KC.MACRO_SLEEP_MS(1000), KC.LCTRL(KC.U), send_string('open https://github.com'), KC.ENTER])
-G_STATUS = simple_key_sequence([KC.LCMD(KC.LALT(KC.LSFT(KC.T))), KC.MACRO_SLEEP_MS(1000), KC.LCTRL(KC.U), send_string('git status'), KC.ENTER])
-G_PULL = simple_key_sequence([KC.LCMD(KC.LALT(KC.LSFT(KC.T))), KC.MACRO_SLEEP_MS(1000), KC.LCTRL(KC.U), send_string('git fetch origin'), KC.ENTER])
-G_COMMIT = simple_key_sequence([KC.LCMD(KC.LALT(KC.LSFT(KC.T))), KC.MACRO_SLEEP_MS(1000), KC.LCTRL(KC.U), send_string('git commit -m ""'), KC.LEFT])
+SAVE = simple_key_sequence([KC.LCTRL(KC.S)])
+COPY = simple_key_sequence([KC.LCTRL(KC.C)])
+PASTE = simple_key_sequence([KC.LCTRL(KC.V)])
 
 # MACROS ROW 2
-BROWSER = simple_key_sequence([KC.LCMD(KC.LALT(KC.LSFT(KC.T))), KC.MACRO_SLEEP_MS(1000), KC.LCTRL(KC.U), send_string('open https://ocrism.studio'), KC.ENTER])
-CLEAR = simple_key_sequence([KC.LCMD(KC.LSFT(KC.BSPC))])
-INSPECT = simple_key_sequence([KC.LCMD(KC.LALT(KC.I))])
-HARD_RELOAD = simple_key_sequence([KC.LCMD(KC.LSFT(KC.R))])
+G_FETCH = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.F, KC.E, KC.T, KC.C, KC.H, KC.MACRO_SLEEP_MS(500), KC.ENTER])
+G_ADD = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.A, KC.D, KC.D, KC.SPACE, KC.LSHIFT(KC.RBRACKET), KC.MACRO_SLEEP_MS(500), KC.ENTER])
+G_COMMIT = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.C, KC.O, KC.M, KC.M, KC.I, KC.T, KC.SPACE, KC.SLASH, KC.M, KC.SPACE, KC.LSHIFT(KC.N2),KC.LSHIFT(KC.N2), KC.LEFT]) 
+G_PUSH = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.P, KC.U, KC.S, KC.H, KC.MACRO_SLEEP_MS(500), KC.ENTER])
+
 
 # MACROS ROW 3
-TERMINAL = simple_key_sequence([KC.LCMD(KC.LALT(KC.LSFT(KC.T))), KC.LCTRL(KC.U)])
-FORCE_QUIT = simple_key_sequence([KC.LCMD(KC.LALT(KC.ESCAPE))])
-MUTE = KC.MUTE
-LOCK = simple_key_sequence([KC.LCTRL(KC.LCMD(KC.Q)), KC.MACRO_SLEEP_MS(400), KC.ESCAPE])
+TERMINAL = simple_key_sequence([KC.LCMD(KC.R), KC.MACRO_SLEEP_MS(1000), KC.W, KC.T, KC.DOT, KC.E, KC.X, KC.E, KC.MACRO_SLEEP_MS(1000), KC.ENTER])
+WORKSPACE = simple_key_sequence([KC.LCMD(KC.R), KC.MACRO_SLEEP_MS(500), KC.C, KC.LSHIFT(KC.DOT), KC.RALT(KC.MINUS), KC.W, KC.O, KC.R, KC.K, KC.S, KC.P, KC.A, KC.C, KC.E, KC.S, KC.MACRO_SLEEP_MS(500), KC.ENTER])
+CAM = simple_key_sequence([KC.LCTRL(KC.LSFT(KC.O))])
+MSTMUTE = simple_key_sequence([KC.LCTRL(KC.LSFT(KC.M))])
 
 
 _______ = KC.TRNS
 xxxxxxx = KC.NO
 
 # LAYER SWITCHING TAP DANCE
-TD_LYRS = KC.TD(LOCK, KC.MO(1), xxxxxxx, KC.TO(2))
+TD_LYRS = KC.TD(MSTMUTE, KC.MO(1), xxxxxxx, KC.TO(2))
 MIDI_OUT = KC.TD(KC.MIDI(70), xxxxxxx, xxxxxxx, KC.TO(0))
 
 # array of default MIDI notes
@@ -70,9 +71,9 @@ MIDI_OUT = KC.TD(KC.MIDI(70), xxxxxxx, xxxxxxx, KC.TO(0))
 keyboard.keymap = [
     # MACROS
     [
-        TERMINAL,   FORCE_QUIT,     KC.MUTE,    TD_LYRS,
-        BROWSER,    CLEAR,          INSPECT,    HARD_RELOAD,
-        GIT,    G_STATUS,       G_PULL,     G_COMMIT,
+        TERMINAL,   WORKSPACE,     CAM,    TD_LYRS,
+        G_FETCH,    G_ADD,          G_COMMIT,    G_PUSH,
+        GIT,    SAVE,       COPY,     PASTE,
     ],
     # RGB CTL
     [
