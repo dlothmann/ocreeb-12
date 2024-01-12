@@ -37,7 +37,7 @@ keyboard.extensions.append(midi_ext)
 keyboard.debug_enabled = False
 
 # MACROS ROW 1
-GIT = simple_key_sequence([KC.LCMD(KC.LALT(KC.LSFT(KC.T))), KC.MACRO_SLEEP_MS(1000), KC.LCTRL(KC.U), send_string('open https://github.com'), KC.ENTER])
+GIT_PULL = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.P, KC.U, KC.L, KC.L, KC.SPACE, KC.MACRO_SLEEP_MS(500), KC.ENTER])
 SAVE = simple_key_sequence([KC.LCTRL(KC.S)])
 COPY = simple_key_sequence([KC.LCTRL(KC.C)])
 PASTE = simple_key_sequence([KC.LCTRL(KC.V)])
@@ -73,7 +73,7 @@ keyboard.keymap = [
     [
         TERMINAL,   WORKSPACE,     CAM,    TD_LYRS,
         G_FETCH,    G_ADD,          G_COMMIT,    G_PUSH,
-        GIT,    SAVE,       COPY,     PASTE,
+        GIT_PULL,    SAVE,       COPY,     PASTE,
     ],
     # RGB CTL
     [
@@ -89,7 +89,7 @@ keyboard.keymap = [
     ]
 ]
 
-encoders.map = [    ((KC.VOLD, KC.VOLU, KC.MUTE),           (KC.RGB_VAD,    KC.RGB_VAI,     KC.RGB_TOG)),   # MACROS
+encoders.map = [    ((KC.RGB_HUD, KC.RGB_HUI, KC.RGB_TOG),   (KC.VOLD,      KC.VOLU,        KC.MUTE)),   # MACROS
                     ((KC.RGB_AND, KC.RGB_ANI, xxxxxxx),     (KC.RGB_HUD,    KC.RGB_HUI,     _______   )),   # RGB CTL
                     ((KC.VOLD, KC.VOLU, KC.MUTE),           (KC.RGB_VAD,    KC.RGB_VAI,     KC.RGB_TOG)),   # MIDI
                 ]
