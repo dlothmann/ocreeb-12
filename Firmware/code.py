@@ -37,21 +37,21 @@ keyboard.extensions.append(midi_ext)
 keyboard.debug_enabled = False
 
 # MACROS ROW 1
-GIT_PULL = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.P, KC.U, KC.L, KC.L, KC.SPACE, KC.MACRO_SLEEP_MS(500), KC.ENTER])
+GIT_PULL = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.P, KC.U, KC.L, KC.L, KC.SPACE, KC.MACRO_SLEEP_MS(250), KC.ENTER])
 SAVE = simple_key_sequence([KC.LCTRL(KC.S)])
 COPY = simple_key_sequence([KC.LCTRL(KC.C)])
 PASTE = simple_key_sequence([KC.LCTRL(KC.V)])
 
 # MACROS ROW 2
-G_FETCH = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.F, KC.E, KC.T, KC.C, KC.H, KC.MACRO_SLEEP_MS(500), KC.ENTER])
-G_ADD = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.A, KC.D, KC.D, KC.SPACE, KC.LSHIFT(KC.RBRACKET), KC.MACRO_SLEEP_MS(500), KC.ENTER])
-G_COMMIT = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.C, KC.O, KC.M, KC.M, KC.I, KC.T, KC.SPACE, KC.SLASH, KC.M, KC.SPACE, KC.LSHIFT(KC.N2),KC.LSHIFT(KC.N2), KC.LEFT]) 
-G_PUSH = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.P, KC.U, KC.S, KC.H, KC.MACRO_SLEEP_MS(500), KC.ENTER])
+G_STATUS = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.S, KC.T, KC.A, KC.T, KC.U, KC.S, KC.MACRO_SLEEP_MS(250), KC.ENTER])
+G_ADD = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.A, KC.D, KC.D, KC.SPACE, KC.LSHIFT(KC.RBRACKET), KC.MACRO_SLEEP_MS(250), KC.ENTER])
+G_COMMIT = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.C, KC.O, KC.M, KC.M, KC.I, KC.T, KC.ENTER])
+G_PUSH = simple_key_sequence([KC.G, KC.I, KC.T, KC.SPACE, KC.P, KC.U, KC.S, KC.H, KC.MACRO_SLEEP_MS(250), KC.ENTER])
 
 
 # MACROS ROW 3
-TERMINAL = simple_key_sequence([KC.LCMD(KC.R), KC.MACRO_SLEEP_MS(1000), KC.W, KC.T, KC.DOT, KC.E, KC.X, KC.E, KC.MACRO_SLEEP_MS(1000), KC.ENTER])
-WORKSPACE = simple_key_sequence([KC.LCMD(KC.R), KC.MACRO_SLEEP_MS(500), KC.C, KC.LSHIFT(KC.DOT), KC.RALT(KC.MINUS), KC.W, KC.O, KC.R, KC.K, KC.S, KC.P, KC.A, KC.C, KC.E, KC.S, KC.MACRO_SLEEP_MS(500), KC.ENTER])
+TERMINAL = simple_key_sequence([KC.LCMD(KC.R), KC.MACRO_SLEEP_MS(1000), KC.W, KC.T, KC.DOT, KC.E, KC.X, KC.E, KC.MACRO_SLEEP_MS(250), KC.ENTER])
+WORKSPACE = simple_key_sequence([KC.LCMD(KC.R), KC.MACRO_SLEEP_MS(1000), KC.C, KC.LSHIFT(KC.DOT), KC.RALT(KC.MINUS), KC.W, KC.O, KC.R, KC.K, KC.S, KC.P, KC.A, KC.C, KC.E, KC.S, KC.MACRO_SLEEP_MS(250), KC.ENTER])
 CAM = simple_key_sequence([KC.LCTRL(KC.LSFT(KC.O))])
 MSTMUTE = simple_key_sequence([KC.LCTRL(KC.LSFT(KC.M))])
 
@@ -72,7 +72,7 @@ keyboard.keymap = [
     # MACROS
     [
         TERMINAL,   WORKSPACE,     CAM,    TD_LYRS,
-        G_FETCH,    G_ADD,          G_COMMIT,    G_PUSH,
+        G_STATUS,    G_ADD,          G_COMMIT,    G_PUSH,
         GIT_PULL,    SAVE,       COPY,     PASTE,
     ],
     # RGB CTL
